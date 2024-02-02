@@ -12,7 +12,7 @@
 // CRUD --> (Creat, Read, Update, Delete)
 // GET, POST, PUT, DELETE, PATCH (Alterar um único item de um recurso)
 
-import { fastify} from 'fastify'
+import { fastify } from 'fastify'
 //import { DatabaseMemory } from './database-memory.js'
 import { DatabasePostgres } from './database-postgres.js'
 
@@ -30,7 +30,7 @@ const {titulo, descricao, duracao} = request.body
         descricao: descricao,
         duracao: duracao
     })
-        console.log(database.list())
+     
         return reply.status(201).send()
     }
 )
@@ -39,8 +39,7 @@ server.get('/videos', async (request)=>{
     const search = request.query.search
 
     const videos = await database.list(search)
-    console.log(videos)
-
+  
     return videos
 })
 
